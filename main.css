@@ -19,7 +19,7 @@
 	--font-main_weight: 400;
 	--font-main_size: 1.4rem;
 	--font-main_line-height: 1.15;
-	--font-main_family: "Rubik", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	--font-main_family: "Rubik", Impact, 'Arial Narrow Bold', sans-serif;
 	--font-main: var(--font-main_weight) var(--font-main_size)/var(--font-main_line-height) var(--font-main_family);
 
 	--default-padding: 1.2rem;
@@ -115,17 +115,20 @@ button.material-icons {
 	font-size: 3.6rem;
 	padding: calc(var(--default-padding) * 1.3);
 }
-/*button:active {
-	background: var(--color-green);
-}*/
+
+div.content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column nowrap;
+}
 
 .name {
 	display: flex;
 	flex-flow: column wrap;
 	align-items: center;
 	justify-content: center;
-	flex: 1;
-	max-width: calc(100vh - var(--default-padding));
+	max-width: 1028px;
 	padding: var(--default-padding);
 }
 
@@ -133,7 +136,7 @@ button.material-icons {
 .name > h2 {
 	margin: 0;
 	font-weight: 900;
-	font-size: 4.6rem;
+	font-size: calc(3.2rem + 2vw);
 	line-height: 1.125;
 	letter-spacing: 0.3rem;
 	text-align: center;
@@ -158,48 +161,3 @@ button.material-icons {
 	align-self: flex-end;
 	width: 100%;
 }
-
-/*
-button {
-	box-sizing: content-box;
-	margin-top: 64px;
-	padding: 18px;
-	border-radius: 50%;
-	background: none;
-	border: none;
-	color: #FFF;
-	
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: var(--default-animation-curve);
-}
-
-#dank {
-	background-color: ;
-}
-
-#lame {
-	background-color: #FF5722;
-}
-
-button:hover {
-	outline: 0;
-	box-shadow: 0 8px 12px rgba(0,0,0,0.25), 0 4px 4px rgba(0,0,0,0.22);
-	background-color: ;
-}
-
-button:focus {
-	outline: 0;
-	box-shadow: 0 8px 12px rgba(0,0,0,0.25), 0 4px 4px rgba(0,0,0,0.22), inset 0 1px 2px rgba(255,255,255,0.7);
-}
-
-button:active {
-	border-bottom: none;
-	// border-top: 3px solid #558B2F;
-	color: #EEE;
-	background-color: #689F38;
-}
-
-button.material-icons {
-	font-size: 36px;
-}
-*/

@@ -52,19 +52,13 @@ function init(state) {
 	if (!window.location.search) {
 		generate();
 	} else {
-		// if (state) console.log("Init from State", state);
 		let [seedA, seedB] = getSearch();
-		console.log({ seedA, seedB });
-
-		// console.log("Running init... weightedRand of Demons")
-		// weightedRand(demons);
 
 		let [itemA, itemB, button] = getItemsFromSeeds(seedA, seedB);
 		Current = new AppState([seedA, seedB], [itemA, itemB]);
 		let [elA, elB] = displayResult(itemA, itemB, button);
 		elA.reveal(600, 200);
 		elB.reveal(600, 200);
-		console.log("Current", Current);
 	}
 }
 
@@ -106,12 +100,9 @@ function displayResult(demon, green) {
 function setSearch(seedA, seedB) {
 	let initQ = window.location.search;
 	let newQ = "?s=" + seedA + seedB;
-	// console.log(initQ, newQ);
 
 	if (initQ == newQ) {
-		// console.log("%s does equal %s", initQ, newQ);
 	} else {
-		// console.log("%s does NOT equal %s", initQ, newQ);
 		window.location.search = newQ;
 	}
 }
@@ -143,14 +134,9 @@ function generate() {
 	let Next = new AppState([seedA, seedB], [itemA, itemB]);
 
 	if (!Current) {
-		console.log("First Generating");
 		setCurrent(Next);
 
 	} else {
-		console.log("Re Generating");
-		console.log(Current.itemA, Next.itemA);
-		console.log(Current.itemB, Next.itemB);
-		
 		if ((Current.itemA !== Next.itemA) && (Current.itemB !== Next.itemB)) {
 			setCurrent(Next);
 		} else {
