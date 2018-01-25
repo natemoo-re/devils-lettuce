@@ -21,6 +21,24 @@
 			</nav>
 		</div>
 
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"> </script>
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase-database.js"></script>
+
+		<script>
+			// Initialize Firebase
+			var config = {
+				apiKey: "AIzaSyBhHCDP_8n0TCgZz_YjS-sPV5sF4Z8f3lE",
+				authDomain: "devils-lettuce-295a0.firebaseapp.com",
+				databaseURL: "https://devils-lettuce-295a0.firebaseio.com",
+				projectId: "devils-lettuce-295a0",
+				storageBucket: "",
+				messagingSenderId: "607216551217"
+			};
+			firebase.initializeApp(config);
+			const database = firebase.database();
+
+		</script>
+
 		<script src="scripts/lib.js"></script>
 		<script src="scripts/db.js"></script>
 		<script src="scripts/random.js"></script>

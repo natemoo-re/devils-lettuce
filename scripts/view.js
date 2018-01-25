@@ -42,11 +42,66 @@ class Random {
 let Current;
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("up").addEventListener("click", generate);
-	document.getElementById("down").addEventListener("click", generate);
+	document.getElementById("up").addEventListener("click", onUp);
+	document.getElementById("down").addEventListener("click", onDown);
 
 	init();
 });
+
+function saveUpvote(current) {
+	var seed = current.seedA + current.seedB;
+	var itemData = {
+		demon: current.itemA,
+		green: current.itemB,
+		upvotes: 1
+	};
+
+	return firebase.database().ref('/items/' + seed).once('value').then(function (snapshot) {
+		var updates = {};
+		if (snapshot.val()) {
+			return firebase.database().ref('/items/' + seed + '/upvotes').once('value').then(function (snapshot) {
+				updates['/items/' + seed + '/upvotes'] = snapshot.val() + 1;
+				return firebase.database().ref().update(updates);
+			})
+		} else {
+			updates['/items/' + seed] = itemData;
+			return firebase.database().ref().update(updates);
+		}
+	});
+}
+function saveDownvote(current) {
+	var seed = current.seedA + current.seedB;
+	var itemData = {
+		demon: current.itemA,
+		green: current.itemB,
+		downvotes: 1
+	};
+
+	return firebase.database().ref('/items/' + seed).once('value').then(function (snapshot) {
+		var updates = {};
+		if (snapshot.val()) {
+			return firebase.database().ref('/items/' + seed + '/downvotes').once('value').then(function (snapshot) {
+				updates['/items/' + seed + '/downvotes'] = snapshot.val() + 1;
+				return firebase.database().ref().update(updates);
+			})
+		} else {
+			updates['/items/' + seed] = itemData;
+			return firebase.database().ref().update(updates);
+		}
+	});
+}
+
+function onUp() {
+	console.log('Up', Current);
+	saveUpvote(Current);
+	generate();
+}
+
+function onDown() {
+	console.log('Down', Current);
+	saveDownvote(Current);
+	generate();
+}
 
 function init(state) {
 	if (!window.location.search) {
